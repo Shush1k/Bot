@@ -15,7 +15,7 @@ def re_month(date):
     months = {
         'янв': 'Jan',
         'фев': 'Feb',
-        'март': 'Mar',
+        'мар': 'Mar',
         'апр': 'Apr',
         'май': 'May',
         'июнь': 'Jun',
