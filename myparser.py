@@ -1,9 +1,7 @@
 import requests
 import datetime
-import locale
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-locale.setlocale(locale.LC_ALL, 'ru_RU')
 
 
 def get_html(url):
@@ -11,6 +9,27 @@ def get_html(url):
         r = requests.get(url, headers={'User-Agent': UserAgent().chrome})
         html = r.text
         return html
+
+
+def re_month(date):
+    months = {
+        'янв': 'Jan',
+        'февр': 'Feb',
+        'март': 'Mar',
+        'апр': 'Apr',
+        'май': 'May',
+        'июнь': 'Jun',
+        'июль': 'Jul',
+        'авг': 'Aug',
+        'сент': 'Sep',
+        'окт': 'Oct',
+        'нояб': 'Nov',
+        'дек': 'Dec'
+    }
+    date = date.split()
+    date[1] = months[date[1]]
+    date = ' '.join(date)
+    return date
 
 
 def parser(html, repertuar):
@@ -21,6 +40,7 @@ def parser(html, repertuar):
     for i in range(len(blocks)):
         date = blocks[i].find('span', class_='date')
         date = str(date.text).strip()
+        date = re_month(date)
         try:                                                                # Високосный год
             check_date = datetime.datetime.strptime(date, '%d %b %H:%M')
         except ValueError:
