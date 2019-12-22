@@ -14,7 +14,7 @@ def get_html(url):
 def re_month(date):
     months = {
         'янв': 'Jan',
-        'февр': 'Feb',
+        'фев': 'Feb',
         'март': 'Mar',
         'апр': 'Apr',
         'май': 'May',
