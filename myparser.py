@@ -3,7 +3,7 @@ import datetime
 import locale
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-
+locale.setlocale(locale.LC_ALL, 'ru')
 
 
 def get_html(url):
